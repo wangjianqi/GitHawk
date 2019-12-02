@@ -10,7 +10,7 @@ import UIKit
 import IGListKit
 
 extension UICollectionViewCell {
-
+    //安全区域
     func layoutContentView(for safeAreaInsets: UIEdgeInsets? = nil) {
         let insets: UIEdgeInsets = safeAreaInsets ?? self.safeAreaInsets
         contentView.frame = CGRect(

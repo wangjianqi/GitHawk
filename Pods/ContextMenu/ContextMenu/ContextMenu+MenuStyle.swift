@@ -17,6 +17,7 @@ extension ContextMenu {
         case `default`
 
         /// Hide the navigation bar in the menu.
+        //隐藏导航栏
         case minimal
     }
 

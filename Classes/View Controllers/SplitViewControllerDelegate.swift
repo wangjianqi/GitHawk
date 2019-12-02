@@ -11,7 +11,7 @@ import UIKit
 // add this shell protocol onto a view controller that should remain part of a tab's root nav VC when splitting out
 // detail VCs from primary on split VC expansion
 protocol PrimaryViewController {}
-
+//设置背景色
 private func fixBackground(for splitViewController: UISplitViewController, collapsing: Bool) {
     splitViewController.view.backgroundColor = collapsing
     ? .white

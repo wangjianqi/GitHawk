@@ -16,13 +16,14 @@ final class InboxFilterRepoSectionController: ListSwiftSectionController<Reposit
         self.inboxFilterController = inboxFilterController
         super.init()
     }
-
+    //绑定
     override func createBinders(from value: RepositoryDetails) -> [ListBinder] {
         return [
             binder(
                 value,
                 cellType: ListCellType.class(InboxFilterRepoCell.self),
                 size: {
+                    //高度
                     return $0.collection.cellSize(with: Styles.Sizes.tableCellHeight)
             }, configure: {
                 $0.configure(
@@ -34,8 +35,9 @@ final class InboxFilterRepoSectionController: ListSwiftSectionController<Reposit
             })
         ]
     }
-
+    //选中
     private func didSelect(value: RepositoryDetails) {
+        //控制器
         viewController?.dismiss(animated: trueUnlessReduceMotionEnabled)
         inboxFilterController.update(selection: InboxFilterModel(
             type: .repo(owner: value.owner, name: value.name))

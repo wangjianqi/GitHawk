@@ -284,6 +284,7 @@ GitHubSessionListener {
     }
 
     @IBAction private func onPushNotificationsInfo(_ sender: Any) {
+        //弹框：UIViewController
         showContextualMenu(PushNotificationsDisclaimerViewController())
     }
 

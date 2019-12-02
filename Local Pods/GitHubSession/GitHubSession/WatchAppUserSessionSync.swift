@@ -23,11 +23,12 @@ public class WatchAppUserSessionSync: NSObject, WCSessionDelegate {
     private let key = "com.freetime.watchappsync.usersession"
 
     public init?(userSession: GitHubUserSession? = nil) {
+        //不支持
         guard WCSession.isSupported() else { return nil }
         self.session = WCSession.default
         self.userSession = userSession
     }
-
+    //开始
     public func start() {
         session.delegate = self
         session.activate()
@@ -53,6 +54,7 @@ public class WatchAppUserSessionSync: NSObject, WCSessionDelegate {
     // MARK: Private API
 
     // https://www.natashatherobot.com/watchconnectivity-user-info/
+    //session有效
     private var validSession: WCSession? {
         #if !os(watchOS)
         guard session.isPaired && session.isWatchAppInstalled else {
@@ -63,7 +65,7 @@ public class WatchAppUserSessionSync: NSObject, WCSessionDelegate {
     }
 
     // MARK: WCSessionDelegate
-
+    //实现协议方法
     public func session(
         _ session: WCSession,
         activationDidCompleteWith activationState: WCSessionActivationState,

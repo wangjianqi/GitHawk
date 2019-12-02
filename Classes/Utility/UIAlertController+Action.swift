@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIAlertController {
-
+    //添加action
     func addActions(_ actions: [UIAlertAction?]) {
         for anAction in actions {
             self.add(action: anAction)

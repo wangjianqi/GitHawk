@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//用户session
 public class GitHubUserSession: NSObject, NSCoding {
 
     enum Keys {

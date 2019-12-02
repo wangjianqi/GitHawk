@@ -38,7 +38,7 @@ private extension AccessibilityHelper {
 }
 
 // MARK: Reduce motion
-
+//动画
 var trueUnlessReduceMotionEnabled: Bool {
     return !UIAccessibilityIsReduceMotionEnabled()
 }

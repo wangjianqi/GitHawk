@@ -9,15 +9,15 @@
 import Squawk
 
 extension Squawk {
-
+    //keyWindow
     private static var window: UIView? {
         return UIApplication.shared.keyWindow
     }
-
+    //错误反馈
     private static func triggerHaptic() {
         Haptic.triggerNotification(.error)
     }
-
+    //配置
     static func errorConfig(text: String) -> Squawk.Configuration {
         return Squawk.Configuration(
             text: text,
@@ -57,7 +57,7 @@ extension Squawk {
         Squawk.shared.show(in: view, config: errorConfig(text: NSLocalizedString("Something went wrong.", comment: "")))
         triggerHaptic()
     }
-
+    //提示错误信息
     static func show(error: Error?, view: UIView? = window) {
         let text: String
         if error?.isGraphQLForbidden == true {
@@ -66,6 +66,7 @@ extension Squawk {
                 comment: ""
             )
         } else {
+            //错误
             text = error?.localizedDescription
                 ?? NSLocalizedString("Something went wrong.", comment: "")
         }

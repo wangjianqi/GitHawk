@@ -9,7 +9,7 @@
 import UserNotifications
 
 extension UNNotificationContent {
-
+    //get方法：返回元组
     var routableUserInfo: (path: String, params: [String: String])? {
         guard let path = userInfo[UNNotificationContentRoutePathKey] as? String else { return nil }
         var params = [String: String]()

@@ -25,7 +25,7 @@ open class DropdownTitleView: UIControl {
         super.init(frame: .zero)
         isAccessibilityElement = true
         accessibilityTraits |= UIAccessibilityTraitButton
-
+        //图片
         chevron.translatesAutoresizingMaskIntoConstraints = false
         chevron.setContentCompressionResistancePriority(.required, for: .horizontal)
         chevron.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -72,7 +72,7 @@ open class DropdownTitleView: UIControl {
 
         horizontalStackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         horizontalStackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-
+        //添加约束
         addConstraint(NSLayoutConstraint(item: horizontalStackView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self, attribute: .width, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: horizontalStackView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: self, attribute: .height, multiplier: 1, constant: 0))
     }
@@ -150,7 +150,7 @@ open class DropdownTitleView: UIControl {
     open override func systemLayoutSizeFitting(_ targetSize: CGSize) -> CGSize {
         return horizontalStackView.systemLayoutSizeFitting(targetSize)
     }
-
+    //固有的尺寸
     override open var intrinsicContentSize: CGSize {
         return UILayoutFittingCompressedSize
     }

@@ -25,6 +25,7 @@ InboxFilterControllerListener {
     private var modelIDs = [String]()
     private var newFeaturesController: NewFeaturesController? = NewFeaturesController()
     private let inboxFilterController: InboxFilterController
+    //标题View
     private let navigationTitle = DropdownTitleView()
 
     private var notifications: [NotificationViewModel] {
@@ -251,6 +252,7 @@ InboxFilterControllerListener {
     }
 
     @objc private func onNavigationTitle() {
+        //弹框
         inboxFilterController.showMenu(from: self)
     }
 

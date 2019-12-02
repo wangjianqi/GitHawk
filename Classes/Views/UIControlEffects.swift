@@ -14,7 +14,7 @@ struct UIControlEffect {
     let transform: CGAffineTransform
     let downDuration: TimeInterval
     let liftDuration: TimeInterval
-
+    //默认值
     init(
         backgroundColor: UIColor? = nil,
         alpha: CGFloat = 0.8,
@@ -31,7 +31,7 @@ struct UIControlEffect {
 }
 
 fileprivate final class UIControlEffects: NSObject {
-
+    //状态
     struct State {
         let backgroundColor: UIColor?
         let alpha: CGFloat

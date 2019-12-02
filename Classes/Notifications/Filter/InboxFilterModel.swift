@@ -8,7 +8,7 @@
 
 import Foundation
 import IGListKit
-
+//IGList
 struct InboxFilterModel: ListSwiftDiffable {
 
     enum FilterType: Equatable {
@@ -17,6 +17,7 @@ struct InboxFilterModel: ListSwiftDiffable {
         case assigned
         case created
         case mentioned
+        //关联值
         case repo(owner: String, name: String)
 
         var title: String {
@@ -36,7 +37,7 @@ struct InboxFilterModel: ListSwiftDiffable {
             case let .repo(owner, _): return owner
             }
         }
-
+        //图片
         var iconName: String? {
             switch self {
             case .unread: return "inbox"

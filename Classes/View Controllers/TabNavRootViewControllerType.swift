@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//协议
 protocol TabNavRootViewControllerType {
     func didSingleTapTab()
     func didDoubleTapTab()

@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-
+//cell
 final class InboxFilterRepoCell: SelectableCell {
 
     private let label = UILabel()
@@ -28,7 +28,7 @@ final class InboxFilterRepoCell: SelectableCell {
             make.left.equalTo(Styles.Sizes.gutter)
             make.right.lessThanOrEqualTo(-Styles.Sizes.gutter)
         }
-
+        //分割线
         let border = contentView.addBorder(.bottom, left: Styles.Sizes.gutter, right: -Styles.Sizes.gutter)
         border.backgroundColor = Styles.Colors.Gray.medium.color
     }
@@ -36,7 +36,7 @@ final class InboxFilterRepoCell: SelectableCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    //给cell赋值
     func configure(owner: String, name: String) {
         let text = NSMutableAttributedString(string: "\(owner)/", attributes: [
             .foregroundColor: Styles.Colors.Gray.light.color,

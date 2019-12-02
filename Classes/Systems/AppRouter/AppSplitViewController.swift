@@ -15,15 +15,17 @@ final class AppSplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //TabBarControllerDelegate
         masterTabBarController?.delegate = tabDelegateController
         delegate = appSplitViewDelegateController
         preferredDisplayMode = .allVisible
     }
 
+    //last
     var detailNavigationController: UINavigationController? {
         return viewControllers.last as? UINavigationController
     }
-
+    //first
     var masterTabBarController: UITabBarController? {
         return viewControllers.first as? UITabBarController
     }

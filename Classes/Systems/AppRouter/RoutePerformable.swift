@@ -8,8 +8,9 @@
 
 import UIKit
 import GitHubSession
-
+//枚举
 enum RoutePerformableResult {
+    //错误类型
     case error
     case custom
     case push(UIViewController)
@@ -30,6 +31,7 @@ struct RoutePerformableProps {
     let client: GithubClient
 }
 
+//协议
 protocol RoutePerformable {
     func perform(props: RoutePerformableProps) -> RoutePerformableResult
 }

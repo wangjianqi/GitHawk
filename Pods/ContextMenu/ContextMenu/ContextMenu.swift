@@ -34,9 +34,10 @@ public class ContextMenu: NSObject {
         delegate: ContextMenuDelegate? = nil
         ) {
         if let previous = self.item {
+            //如果已经弹出，先隐藏
             previous.viewController.dismiss(animated: false)
         }
-
+        //反馈
         if #available(iOS 10, *), let raw = options.hapticsStyle?.rawValue, let feedbackStyle = UIImpactFeedbackGenerator.FeedbackStyle(rawValue: raw) {
             let haptics = UIImpactFeedbackGenerator(style: feedbackStyle)
             haptics.impactOccurred()
@@ -51,8 +52,11 @@ public class ContextMenu: NSObject {
         self.item = item
 
         item.viewController.transitioningDelegate = self
+        //自定义
         item.viewController.modalPresentationStyle = .custom
+        //状态栏
         item.viewController.modalPresentationCapturesStatusBarAppearance = true
+        //弹出
         sourceViewController.present(item.viewController, animated: true)
     }
 

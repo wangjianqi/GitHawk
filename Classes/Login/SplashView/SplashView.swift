@@ -29,7 +29,7 @@ final class SplashView: UIView {
 
         setupView()
     }
-
+    //添加动画
     func configureView() {
         addBirdAnimation()
         addBranchesAnimation()

@@ -24,7 +24,7 @@ func newSettingsRootViewController(
 
     return nav
 }
-
+//获取首页controller
 func newNotificationsRootViewController(client: GithubClient) -> UIViewController {
     let controller = NotificationsViewController(
         modelController: NotificationModelController(githubClient: client)

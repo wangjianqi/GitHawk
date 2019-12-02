@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 
 extension UIView {
-
+    
     public enum Position {
         case left
         case top
         case right
         case bottom
     }
-
+    //分割线
     @discardableResult
     public func addBorder(
         _ position: Position,
@@ -31,6 +31,7 @@ extension UIView {
         view.backgroundColor = Styles.Colors.Gray.border.color
         addSubview(view)
         view.snp.makeConstraints { make in
+            //1像素
             let size = 1.0 / UIScreen.main.scale
 
             switch position {

@@ -10,6 +10,7 @@ import Foundation
 import GitHawkRoutes
 import Crashlytics
 
+//类型  inout修改值
 private func register<T: Routable & RoutePerformable>(
     route: T.Type,
     map: inout [String: (Routable & RoutePerformable).Type]
@@ -20,9 +21,11 @@ private func register<T: Routable & RoutePerformable>(
 private var hasSwizzledChildViewController = false
 
 private func logMissingRouter() {
+    //异常错误
     let trace = Thread.callStackSymbols.joined(separator: "\n")
     print("ERROR: Router not wired up. Callsite:")
     print(trace)
+    //保存
     Answers.logCustomEvent(
         withName: "missing-router",
         customAttributes: ["trace": trace]
@@ -30,7 +33,7 @@ private func logMissingRouter() {
 }
 
 extension UIViewController {
-
+    //交换方法
     fileprivate class func swizzleChildViewController() {
         // make sure this isn't a subclass
         if self !== UIViewController.self,
@@ -59,6 +62,7 @@ extension UIViewController {
         controller.router = router
     }
 
+    //给UIViewController
     private static var RouterAssocObjectKey = "RouterAssocObjectKey"
     var router: Router? {
         get {
@@ -101,7 +105,7 @@ extension UIViewController {
     }
 
 }
-
+//继承class
 protocol RouterPropsSource: class {
     func props(for router: Router) -> RoutePerformableProps?
 }
@@ -109,8 +113,9 @@ protocol RouterPropsSource: class {
 final class Router: NSObject {
 
     private weak var propsSource: RouterPropsSource?
+    //满足协议的类型
     private let routes: [String: (Routable & RoutePerformable).Type]
-
+    //构造方法
     init(propsSource: RouterPropsSource) {
         var routes = [String: (Routable & RoutePerformable).Type]()
         register(route: BookmarkShortcutRoute.self, map: &routes)
@@ -135,6 +140,7 @@ final class Router: NSObject {
         return handle(path: host, params: params)
     }
 
+    //快捷方式
     @discardableResult
     func handle(path: String, params: [String: String]) -> RoutePerformableResult {
         guard let routeType = routes[path],
@@ -144,12 +150,14 @@ final class Router: NSObject {
     }
 
     // returning .show(controller) displays the controller in the detail view
+    //类型
     func handle(route: Routable & RoutePerformable) -> RoutePerformableResult {
         return handle(route: route, from: nil)
     }
 
     // returning the .show(controller) pushes the controller onto the nav stack
     // if a from controller is present
+    //弹出新页面
     @discardableResult
     func handle(
         route: Routable & RoutePerformable,
@@ -175,7 +183,7 @@ final class Router: NSObject {
         }
         return result
     }
-
+    //push方法
     func push(from: UIViewController, to: UIViewController) {
         to.router = self
         from.navigationController?.pushViewController(
@@ -184,11 +192,13 @@ final class Router: NSObject {
         )
     }
 
+    //present
     func present(from: UIViewController, to: UIViewController) {
         to.router = self
         from.present(to, animated: trueUnlessReduceMotionEnabled)
     }
 
+    //详情
     func detail(controller: UIViewController) {
         guard let split = propsSource?.props(for: self)?.splitViewController
             else { return }

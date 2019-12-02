@@ -14,8 +14,9 @@ public protocol GitHubSessionListener: class {
 }
 
 public class GitHubSessionManager: NSObject {
-
+    //class
     private class ListenerWrapper: NSObject {
+        //weak
         weak var listener: GitHubSessionListener?
     }
     private var listeners = [ListenerWrapper]()
@@ -32,6 +33,7 @@ public class GitHubSessionManager: NSObject {
 
     public override init() {
         let nonSharedDefaults = UserDefaults.standard
+        //suite：一套
         defaults = UserDefaults(suiteName: "group.com.whoisryannystrom.freetime") ?? .standard
 
         // Support migration outside of Freetime app workspace/module
@@ -87,6 +89,7 @@ public class GitHubSessionManager: NSObject {
         return _userSessions.array as? [GitHubUserSession] ?? []
     }
 
+    //监听
     public func addListener(listener: GitHubSessionListener) {
         let wrapper = ListenerWrapper()
         wrapper.listener = listener
@@ -113,8 +116,10 @@ public class GitHubSessionManager: NSObject {
 
     public func save() {
         if _userSessions.count > 0 {
+            //Data
             defaults.set(NSKeyedArchiver.archivedData(withRootObject: _userSessions), forKey: Keys.latest)
         } else {
+            //删除
             defaults.removeObject(forKey: Keys.latest)
         }
     }

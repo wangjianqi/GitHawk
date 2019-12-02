@@ -45,6 +45,7 @@ final class LoginSplashViewController: UIViewController {
             _authSession = newValue
         }
     }
+    //内部使用
     private var _authSession: Any?
 
     var state: State = .idle {
@@ -78,7 +79,7 @@ final class LoginSplashViewController: UIViewController {
     }
 
     // MARK: Public API
-
+    //获取controller
     static func make(client: Client, delegate: LoginSplashViewControllerDelegate) -> LoginSplashViewController? {
         let controller = UIStoryboard(
             name: "OauthLogin",
@@ -91,7 +92,7 @@ final class LoginSplashViewController: UIViewController {
     }
 
     // MARK: Private API
-
+    //登录
     @IBAction func onSignInButton(_ sender: Any) {
         self.authSession = SFAuthenticationSession(url: loginURL, callbackURLScheme: callbackURLScheme, completionHandler: { [weak self] (callbackUrl, error) in
             guard error == nil, let callbackUrl = callbackUrl else {
@@ -134,12 +135,13 @@ final class LoginSplashViewController: UIViewController {
 
         alert.addActions([
             AlertAction.cancel(),
+            //登录
             AlertAction.login({ [weak alert, weak self] _ in
                 alert?.actions.forEach { $0.isEnabled = false }
 
                 self?.state = .fetchingToken
 
-                let token = alert?.textFields?.first?.text ?? ""
+                let token = "bf76f95cc7fae7ed9ce89db2a0d0f7e3e62a410d"//alert?.textFields?.first?.text ?? ""
                 self?.client.send(V3VerifyPersonalAccessTokenRequest(token: token)) { result in
                     switch result {
                     case .failure:

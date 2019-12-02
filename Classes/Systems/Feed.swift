@@ -56,6 +56,7 @@ final class Feed: NSObject, UIScrollViewDelegate {
         self.collectionView.alwaysBounceVertical = true
         self.collectionView.backgroundColor = Styles.Colors.background
         self.collectionView.refreshControl = feedRefresh.refreshControl
+        //隐藏键盘
         self.collectionView.keyboardDismissMode = .onDrag
         self.collectionView.accessibilityIdentifier = "feed-collection-view"
         feedRefresh.refreshControl.addTarget(self, action: #selector(Feed.onRefresh(sender:)), for: .valueChanged)
@@ -84,7 +85,7 @@ final class Feed: NSObject, UIScrollViewDelegate {
     var adapter: ListAdapter {
         return swiftAdapter.listAdapter
     }
-
+    //刷新Head
     func refreshHead() {
         refresh()
         feedRefresh.beginRefreshing()
@@ -126,7 +127,7 @@ final class Feed: NSObject, UIScrollViewDelegate {
             collectionView.collectionViewLayout.invalidateForOrientationChange()
         }
     }
-
+    //结束加载
     func finishLoading(dismissRefresh: Bool, animated: Bool = true, completion: (() -> Void)? = nil) {
         status = .idle
         loadingView.isHidden = true

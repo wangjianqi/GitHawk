@@ -19,8 +19,10 @@ BaseListViewControllerDataSource {
     init(inboxFilterController: InboxFilterController) {
         self.inboxFilterController = inboxFilterController
         super.init(emptyErrorMessage: NSLocalizedString("Error loading repos", comment: ""))
+        //设置代理
         dataSource = self
         title = NSLocalizedString("Watched Repos", comment: "")
+        //内容尺寸
         preferredContentSize = Styles.Sizes.contextMenuSize
         feed.collectionView.backgroundColor = Styles.Colors.menuBackgroundColor.color
         feed.collectionView.indicatorStyle = .white
@@ -33,6 +35,7 @@ BaseListViewControllerDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //标题
         navigationController?.navigationBar.titleTextAttributes = [
             .foregroundColor: UIColor.white
         ]
@@ -55,6 +58,7 @@ BaseListViewControllerDataSource {
     func models(adapter: ListSwiftAdapter) -> [ListSwiftPair] {
         return repos.map { [inboxFilterController] model in
             ListSwiftPair.pair(model, {
+                //绑定model和cell
                 InboxFilterRepoSectionController(inboxFilterController: inboxFilterController)
             })
         }

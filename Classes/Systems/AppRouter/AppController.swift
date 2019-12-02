@@ -15,18 +15,21 @@ final class AppController: NSObject,
 LoginSplashViewControllerDelegate,
 GitHubSessionListener,
 RouterPropsSource {
-
+    //路由
     public private(set) lazy var router = {
         return Router(propsSource: self)
     }()
-
+    //控制器
     private var splitViewController: AppSplitViewController!
+    //session
     private let sessionManager = GitHubSessionManager()
+    //weak
     private weak var loginViewController: LoginSplashViewController?
     private var appClient: GithubClient?
     private var settingsNavigationController: UINavigationController?
     private var watchAppSync: WatchAppUserSessionSync?
 
+    //
     override init() {
         super.init()
         attachNotificationDelegate()
@@ -34,6 +37,7 @@ RouterPropsSource {
     }
 
     func appDidFinishLaunching(with window: UIWindow?) {
+        //Root
         guard let controller = window?.rootViewController as? AppSplitViewController else {
             fatalError("App must be setup with a split view controller")
         }
@@ -66,7 +70,7 @@ RouterPropsSource {
         watchAppSync = WatchAppUserSessionSync(userSession: userSession)
         watchAppSync?.start()
     }
-
+    //快捷方式
     private func resetShortcuts() {
         ShortcutHandler.configure(sessionUsernames: sessionManager.userSessions.compactMap { $0.username })
     }
@@ -93,7 +97,7 @@ RouterPropsSource {
         // recursively update all new children
         splitViewController.router = router
     }
-
+    //登录
     private func showLogin(animated: Bool) {
         guard let controller = LoginSplashViewController.make(
             client: Client.make(),
@@ -116,7 +120,7 @@ RouterPropsSource {
     }
 
     // MARK: LoginSplashViewControllerDelegate
-
+    //登录成功
     func finishLogin(token: String, authMethod: GitHubUserSession.AuthMethod, username: String) {
         sessionManager.focus(
             GitHubUserSession(token: token, authMethod: authMethod, username: username)
@@ -143,7 +147,7 @@ RouterPropsSource {
     }
 
     // MARK: RouterPropsSource
-
+    //协议方法
     func props(for router: Router) -> RoutePerformableProps? {
         guard let client = appClient else { return nil }
         return RoutePerformableProps(

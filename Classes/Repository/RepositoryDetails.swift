@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//相当于model
 struct RepositoryDetails: Codable, Equatable {
     let owner: String
     let name: String

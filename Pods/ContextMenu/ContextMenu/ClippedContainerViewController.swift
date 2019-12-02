@@ -33,6 +33,7 @@ class ClippedContainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //设置显示
         view.layer.cornerRadius = options.containerStyle.cornerRadius
         view.layer.shadowRadius = options.containerStyle.shadowRadius
         view.layer.shadowOpacity = options.containerStyle.shadowOpacity
@@ -41,6 +42,7 @@ class ClippedContainerViewController: UIViewController {
         view.backgroundColor = options.containerStyle.backgroundColor
 
         if options.containerStyle.motionEffect && UIAccessibility.isReduceMotionEnabled == false {
+            //https://www.jianshu.com/p/a89d5a77a15e
             let amount = 12
             let tiltX = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
             tiltX.minimumRelativeValue = -amount
@@ -65,7 +67,7 @@ class ClippedContainerViewController: UIViewController {
 
         options.containerStyle.backgroundColor.setFill()
         UIBezierPath(rect: CGRect(origin: .zero, size: size)).fill()
-
+        //隐藏导航栏分割线
         let image = UIGraphicsGetImageFromCurrentImageContext()
         let navigationBar = containedViewController.navigationBar
         navigationBar.isTranslucent = false

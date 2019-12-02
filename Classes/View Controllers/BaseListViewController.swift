@@ -8,19 +8,19 @@
 
 import UIKit
 import IGListKit
-
+//数据源
 protocol BaseListViewControllerDataSource: class {
     func models(adapter: ListSwiftAdapter) -> [ListSwiftPair]
 }
-
+//空白页
 protocol BaseListViewControllerEmptyDataSource: class {
     func emptyModel(for adapter: ListSwiftAdapter) -> ListSwiftPair
 }
-
+//header
 protocol BaseListViewControllerHeaderDataSource: class {
     func headerModel(for adapter: ListSwiftAdapter) -> ListSwiftPair
 }
-
+//基类
 class BaseListViewController<PageType: CustomStringConvertible>: UIViewController,
 ListSwiftAdapterDataSource,
 FeedDelegate,
@@ -40,6 +40,7 @@ EmptyViewDelegate {
         delegate: self,
         backgroundThreshold: backgroundThreshold
         ) }()
+    //
     private var page: PageType?
     private var hasError = false
 
@@ -75,7 +76,7 @@ EmptyViewDelegate {
     func fetch(page: PageType?) {}
 
     // MARK: Public API
-
+    //更新
     final func update(animated: Bool = true) {
         self.feed.finishLoading(
             dismissRefresh: true,
@@ -124,7 +125,7 @@ EmptyViewDelegate {
     }
 
     // MARK: ListSwiftAdapterDataSource
-
+    // DataSource协议
     public func values(adapter: ListSwiftAdapter) -> [ListSwiftPair] {
         assert(Thread.isMainThread)
         guard let dataSource = self.dataSource else { return [] }

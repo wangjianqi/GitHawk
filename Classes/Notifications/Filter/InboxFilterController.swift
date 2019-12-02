@@ -49,11 +49,11 @@ final class InboxFilterController {
     init(client: InboxFilterControllerClient) {
         self.client = client
     }
-
+    //更新
     func update(selection: InboxFilterModel) {
         selected = selection
     }
-
+    //选中
     private func selected(model: InboxFilterModel) {
         selected = model
     }
@@ -62,6 +62,7 @@ final class InboxFilterController {
         guard let viewController = viewController else { return }
         ContextMenu.shared.show(
             sourceViewController: viewController,
+            //显示的ViewController
             viewController: InboxFilterReposViewController(inboxFilterController: self),
             options: ContextMenu.Options(
                 containerStyle: ContextMenu.ContainerStyle(
@@ -72,6 +73,7 @@ final class InboxFilterController {
     }
 
     func showMenu(from viewController: UIViewController) {
+        //map
         var items: [ContrastContextMenuItem] = InboxFilterController.filters.map { model in
             ContrastContextMenuItem(
                 title: model.type.title,
@@ -83,6 +85,7 @@ final class InboxFilterController {
                     self?.selected(model: model)
             })
         }
+        //添加Item
         items.append(ContrastContextMenuItem(
             title: NSLocalizedString("Repos", comment: ""),
             iconName: "repo",
@@ -92,7 +95,7 @@ final class InboxFilterController {
                 menu.dismiss(animated: trueUnlessReduceMotionEnabled)
                 self?.showRepos(from: viewController)
         }))
-
+        //显示
         ContextMenu.shared.show(
             sourceViewController: viewController,
             viewController: ContrastContextMenu(items: items),

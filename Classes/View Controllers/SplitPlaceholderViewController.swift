@@ -8,7 +8,7 @@
 
 import UIKit
 import SnapKit
-
+//空白页
 final class SplitPlaceholderViewController: UIViewController {
 
     private let imageView = UIImageView(image: UIImage(named: "splash-light"))

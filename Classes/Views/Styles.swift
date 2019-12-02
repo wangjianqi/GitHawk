@@ -124,6 +124,7 @@ enum Styles {
 
     }
 
+    //设置样式
     static func setupAppearance() {
         UINavigationBar.appearance().tintColor =  Styles.Colors.Blue.medium.color
         UINavigationBar.appearance().titleTextAttributes =
