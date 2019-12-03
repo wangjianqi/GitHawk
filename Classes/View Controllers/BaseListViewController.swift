@@ -170,6 +170,7 @@ EmptyViewDelegate {
 
     func emptyView(adapter: ListSwiftAdapter) -> UIView? {
         guard hasError, feed.status != .initial else { return nil }
+        // 显示空白页
         let empty = EmptyView()
         empty.label.text = emptyErrorMessage
         empty.delegate = self
@@ -179,7 +180,7 @@ EmptyViewDelegate {
     }
 
     // MARK: EmptyViewDelegate
-
+    // 重新加载
     func didTapRetry(view: EmptyView) {
         // order is required to hide the error empty view while loading
         feed.refreshHead()

@@ -26,7 +26,7 @@ extension Squawk {
             hintMargin: Styles.Sizes.rowSpacing
         )
     }
-
+    //默认值
     static func showAlreadyOnBeta(view: UIView? = window) {
         let config = Squawk.Configuration(
             text: NSLocalizedString("You're already using a TestFlight build. 👌", comment: ""),

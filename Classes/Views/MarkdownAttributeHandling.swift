@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+//管理值枚举
 enum DetectedMarkdownAttribute {
     case url(URL)
     case username(String)

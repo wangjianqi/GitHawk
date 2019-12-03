@@ -12,7 +12,7 @@ import SnapKit
 protocol EmptyViewDelegate: class {
     func didTapRetry(view: EmptyView)
 }
-
+// 空白页
 final class EmptyView: UIView {
 
     let label = UILabel()

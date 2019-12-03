@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIImage {
-
+    //颜色转图片
     class func from(color: UIColor) -> UIImage {
         let size = CGSize(width: 1, height: 1)
         UIGraphicsBeginImageContext(size)

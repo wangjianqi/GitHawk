@@ -9,7 +9,7 @@
 import UIKit
 
 public extension Squawk {
-
+    //配置
     public struct Configuration {
 
         let text: String

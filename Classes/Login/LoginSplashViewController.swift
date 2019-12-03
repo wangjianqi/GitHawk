@@ -141,7 +141,7 @@ final class LoginSplashViewController: UIViewController {
 
                 self?.state = .fetchingToken
 
-                let token = "bf76f95cc7fae7ed9ce89db2a0d0f7e3e62a410d"//alert?.textFields?.first?.text ?? ""
+                let token = "3627672db3ff5b59575401e9f67bd72190db0b46"//alert?.textFields?.first?.text ?? ""
                 self?.client.send(V3VerifyPersonalAccessTokenRequest(token: token)) { result in
                     switch result {
                     case .failure:

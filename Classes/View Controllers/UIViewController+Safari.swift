@@ -13,12 +13,15 @@ extension UIViewController {
 
     func presentSafari(url: URL) {
         if UserDefaults.standard.shouldOpenExternalLinksInSafari {
+            //不能打开
             guard UIApplication.shared.canOpenURL(url) else {
+                //失败
                 assertionFailure("Can't open url: \(url)")
                 return
             }
             UIApplication.shared.open(url)
         } else {
+            //do catch:捕获throws
             do {
                 let safariViewController = try SFSafariViewController.configured(with: url)
                 route_present(to: safariViewController)
@@ -51,14 +54,17 @@ extension UIViewController {
 }
 
 extension SFSafariViewController {
-
+    //使用throws
 	static func configured(with url: URL) throws -> SFSafariViewController {
 		let http = "http"
+        //注意这里用的是let
 		let schemedURL: URL
 		// handles http and https
+        //可选值所以用==true
 		if url.scheme?.hasPrefix(http) == true {
 			schemedURL = url
 		} else {
+            //抛出错误
 			guard let u = URL(string: http + "://" + url.absoluteString) else { throw URL.Error.failedToCreateURL }
 			schemedURL = u
 		}
@@ -69,7 +75,7 @@ extension SFSafariViewController {
 }
 
 extension URL {
-
+    //错误
 	enum Error: Swift.Error {
 		case failedToCreateURL
 	}

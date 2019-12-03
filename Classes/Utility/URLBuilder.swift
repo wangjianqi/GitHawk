@@ -14,10 +14,11 @@ final class URLBuilder {
     private var pathComponents = [String]()
 
     init(host: String, scheme: String) {
+        //主机
         components.host = host
         components.scheme = scheme
     }
-
+    //便利构造方法：需调用init方法
     convenience init(host: String, https: Bool = true) {
         self.init(host: host, scheme: https ? "https" : "http")
     }
@@ -26,12 +27,14 @@ final class URLBuilder {
         return URLBuilder(host: "github.com", https: true)
     }
 
+    //注意返回对象本身(self):
     @discardableResult
     func add(path: LosslessStringConvertible) -> URLBuilder {
         pathComponents.append(String(describing: path))
         return self
     }
 
+    //批量添加
     @discardableResult
     func add(paths: [LosslessStringConvertible]) -> URLBuilder {
         paths.forEach { self.add(path: $0) }
@@ -51,9 +54,10 @@ final class URLBuilder {
         components.fragment = fragment
         return self
     }
-
+    //
     var url: URL? {
         var components = self.components
+        //用/拼接
         if !pathComponents.isEmpty {
             components.path = "/" + pathComponents.joined(separator: "/")
         }

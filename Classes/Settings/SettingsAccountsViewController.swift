@@ -79,7 +79,7 @@ SettingsAccountCellDelegate {
 
         present(alert, animated: trueUnlessReduceMotionEnabled)
     }
-
+    //错误
     private func handleError() {
         let alert = UIAlertController.configured(
             title: NSLocalizedString("Error", comment: ""),
@@ -101,6 +101,7 @@ SettingsAccountCellDelegate {
 
     private func updateUserSessions() {
         userSessions = sessionManager.userSessions.sorted(by: { (left, right) -> Bool in
+            //排序：命名left和right
             return (left.username ?? "") < (right.username ?? "")
         })
     }

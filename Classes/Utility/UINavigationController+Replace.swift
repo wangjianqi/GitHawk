@@ -9,7 +9,7 @@
 import UIKit
 
 extension UINavigationController {
-
+    //替换最上层控制器
     func replaceTopMostViewController(_ newViewController: UIViewController, animated: Bool) {
         var currentViewControllers = viewControllers
         currentViewControllers[viewControllers.count - 1] = newViewController

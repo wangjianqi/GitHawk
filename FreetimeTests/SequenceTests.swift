@@ -12,6 +12,7 @@ import XCTest
 class SequenceTests: XCTestCase {
 
     func test_containsAll() {
+        XCTAssertFalse([].containsOnly("a"))
         XCTAssertTrue(["a", "a", "a"].containsOnly("a"))
         XCTAssertFalse(["b", "a", "a"].containsOnly("a"))
         XCTAssertFalse(["a", "a", "a"].containsOnly("b"))

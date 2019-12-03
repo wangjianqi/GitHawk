@@ -14,6 +14,7 @@ extension UIApplication {
         guard let url = URLBuilder.github()
             .add(paths: ["settings", "connections", "applications", Secrets.GitHub.clientId]).url
             else { return }
+        //UIApplication.open 
         open(url, options: [:])
     }
 

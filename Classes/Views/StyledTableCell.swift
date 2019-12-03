@@ -22,9 +22,10 @@ class StyledTableCell: UITableViewCell {
 
     private func configure() {
         textLabel?.font = Styles.Text.body.preferredFont
-
+        //背景色
         let background = UIView()
         background.backgroundColor = Styles.Colors.Gray.alphaLighter
+        //选中背景
         selectedBackgroundView = background
     }
 

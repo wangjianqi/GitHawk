@@ -56,7 +56,7 @@ final class NewIssueTableViewController: UITableViewController, UITextFieldDeleg
     private var repo: String!
     private var signature: IssueSignatureType?
     private let textActionsController = TextActionsController()
-
+    //输入标题
     private var titleText: String? {
         guard let raw = titleField.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return nil }
         if raw.isEmpty { return nil }
@@ -76,6 +76,7 @@ final class NewIssueTableViewController: UITableViewController, UITextFieldDeleg
         let storyboard = UIStoryboard(name: "NewIssue", bundle: nil)
 
         let viewController = storyboard.instantiateInitialViewController() as? NewIssueTableViewController
+        //隐藏
         viewController?.hidesBottomBarWhenPushed = true
         viewController?.client = client
         viewController?.owner = owner
@@ -109,12 +110,13 @@ final class NewIssueTableViewController: UITableViewController, UITextFieldDeleg
 
         // Update title to use localization
         title = Constants.Strings.newIssue
-
+        //输入
         titleField.becomeFirstResponder()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        //结束编辑
         view.endEditing(false)
     }
 
@@ -217,6 +219,7 @@ final class NewIssueTableViewController: UITableViewController, UITextFieldDeleg
 
     /// Called when editing changed on the title field, enable/disable submit button based on title text
     @IBAction func titleFieldEditingChanged(_ sender: Any) {
+        //文本变化
         navigationItem.rightBarButtonItem?.isEnabled = titleText != nil
     }
 
