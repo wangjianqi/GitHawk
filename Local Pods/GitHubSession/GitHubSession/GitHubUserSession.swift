@@ -15,7 +15,7 @@ public class GitHubUserSession: NSObject, NSCoding {
         static let authMethod = "authMethod"
         static let username = "username"
     }
-
+    //方式
     public enum AuthMethod: String {
         case oauth, pat
     }

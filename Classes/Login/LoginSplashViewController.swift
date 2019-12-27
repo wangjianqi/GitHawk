@@ -17,7 +17,7 @@ private let loginURL = URLBuilder.github()
     .add(item: "scope", value: "user+repo+notifications")
     .url!
 private let callbackURLScheme = "freetime://"
-
+//登录成功
 protocol LoginSplashViewControllerDelegate: class {
     func finishLogin(token: String, authMethod: GitHubUserSession.AuthMethod, username: String)
 }
@@ -47,7 +47,7 @@ final class LoginSplashViewController: UIViewController {
     }
     //内部使用
     private var _authSession: Any?
-
+    //通过修改状态配置
     var state: State = .idle {
         didSet {
             let hideSpinner: Bool
@@ -74,7 +74,7 @@ final class LoginSplashViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        //在已经出现开始动画
         setupSplashView()
     }
 
@@ -140,8 +140,8 @@ final class LoginSplashViewController: UIViewController {
                 alert?.actions.forEach { $0.isEnabled = false }
 
                 self?.state = .fetchingToken
-
-                let token = "3627672db3ff5b59575401e9f67bd72190db0b46"//alert?.textFields?.first?.text ?? ""
+                //FIXME -
+                let token = "7902909a85e31f9aab34c3008a572e52553da618"//alert?.textFields?.first?.text ?? ""
                 self?.client.send(V3VerifyPersonalAccessTokenRequest(token: token)) { result in
                     switch result {
                     case .failure:
@@ -155,7 +155,7 @@ final class LoginSplashViewController: UIViewController {
 
         present(alert, animated: trueUnlessReduceMotionEnabled)
     }
-
+    //错误提示
     private func handleError() {
         state = .idle
 

@@ -40,7 +40,7 @@ public class Client {
         self.apollo = apollo
         self.token = token
     }
-
+    //发送
     public func send<T: HTTPRequest>(_ request: T, completion: @escaping (Result<T.ResponseType>) -> Void) {
         var parameters = request.parameters ?? [:]
         parameters["access_token"] = token

@@ -7,8 +7,9 @@
 //
 
 import Foundation
-
+//<T>: 泛型
 enum Result<T> {
+    //支持可选值
     case error(Error?)
     case success(T)
 }

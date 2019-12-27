@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//
 typealias AlertActionBlock = (UIAlertAction) -> Void
 
 // MARK: AlertActions -
@@ -88,7 +88,7 @@ struct AlertAction {
     }
 
     // MARK: Static
-
+    //取消
     static func cancel(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
         return UIAlertAction(title: Constants.Strings.cancel, style: .cancel, handler: handler)
     }
@@ -116,7 +116,7 @@ struct AlertAction {
     static func delete(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
         return UIAlertAction(title: NSLocalizedString("Delete", comment: ""), style: .destructive, handler: handler)
     }
-
+    //登录
     static func login(_ handler: AlertActionBlock? = nil) -> UIAlertAction {
         return UIAlertAction(title: Constants.Strings.signin, style: .default, handler: handler)
     }

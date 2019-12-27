@@ -27,9 +27,11 @@ extension Client {
         ) { [weak self] result in
             switch result {
             case .success(let response):
+                //成功
                 self?.send(V3VerifyPersonalAccessTokenRequest(token: response.data.accessToken)) { result in
                     switch result {
                     case .success(let response2):
+                        //成功
                         completion(.success(AccessTokenUser(token: response.data.accessToken, username: response2.data.login)))
                     case .failure(let error):
                         completion(.error(error))
